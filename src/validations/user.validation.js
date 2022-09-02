@@ -36,6 +36,7 @@ const updateUser = {
       email: Joi.string().email(),
       password: Joi.string().custom(password),
       name: Joi.string(),
+      profilePicUrl: Joi.string(),
     })
     .min(1),
 };
