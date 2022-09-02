@@ -35,6 +35,15 @@ const userSchema = mongoose.Schema(
       },
       private: true, // used by the toJSON plugin
     },
+    profilePicUrl: {
+      type: String,
+      trim: true,
+      validate(value) {
+        if (!validator.isURL(value)) {
+          throw new Error('Invalid URL');
+        }
+      },
+    },
     role: {
       type: String,
       enum: roles,
