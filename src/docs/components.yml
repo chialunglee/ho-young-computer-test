@@ -19,6 +19,29 @@ components:
         name: fake name
         role: user
 
+    Blog:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        text:
+          type: string
+        blogUrl:
+          type: string
+        score:
+          type: number
+        userId:
+          type: string
+      example:
+        id: 63131dee218c560059186289
+        title: Sheepaaa
+        text: a1b2c3d4
+        blogUrl: https://www.example.com/dgbrgviurgy
+        score: 1
+        userId: 63119487a50a51004babcf43
+
     Token:
       type: object
       properties:
