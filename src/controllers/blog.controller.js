@@ -4,7 +4,7 @@ const { blogService } = require('../services');
 
 const createBlog = catchAsync(async (req, res) => {
   const blog = await blogService.createBlog(req.user._id, req.body);
-  res.status(httpStatus.CREATED).send(blog);
+  res.status(httpStatus.OK).send(blog);
 });
 
 module.exports = {
