@@ -19,6 +19,7 @@ describe('User routes', () => {
         email: faker.internet.email().toLowerCase(),
         password: 'password1',
         role: 'user',
+        profilePicUrl: faker.internet.url(),
       };
     });
 
@@ -38,6 +39,7 @@ describe('User routes', () => {
         email: newUser.email,
         role: newUser.role,
         isEmailVerified: false,
+        profilePicUrl: newUser.profilePicUrl,
       });
 
       const dbUser = await User.findById(res.body.id);
@@ -131,6 +133,17 @@ describe('User routes', () => {
     test('should return 400 error if role is neither user nor admin', async () => {
       await insertUsers([admin]);
       newUser.role = 'invalid';
+
+      await request(app)
+        .post('/v1/users')
+        .set('Authorization', `Bearer ${adminAccessToken}`)
+        .send(newUser)
+        .expect(httpStatus.BAD_REQUEST);
+    });
+
+    test('should return 400 error if profilePicUrl is invalid', async () => {
+      await insertUsers([admin]);
+      newUser.profilePicUrl = 'invalidUrl';
 
       await request(app)
         .post('/v1/users')
@@ -614,6 +627,17 @@ describe('User routes', () => {
         .expect(httpStatus.BAD_REQUEST);
 
       updateBody.password = '11111111';
+
+      await request(app)
+        .patch(`/v1/users/${userOne._id}`)
+        .set('Authorization', `Bearer ${userOneAccessToken}`)
+        .send(updateBody)
+        .expect(httpStatus.BAD_REQUEST);
+    });
+
+    test('should return 400 if profilePicUrl is invalid', async () => {
+      await insertUsers([userOne]);
+      const updateBody = { profilePicUrl: 'invalidUrl' };
 
       await request(app)
         .patch(`/v1/users/${userOne._id}`)

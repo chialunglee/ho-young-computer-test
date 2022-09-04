@@ -26,6 +26,7 @@ describe('Auth routes', () => {
         name: faker.name.findName(),
         email: faker.internet.email().toLowerCase(),
         password: 'password1',
+        profilePicUrl: faker.internet.url(),
       };
     });
 
@@ -39,6 +40,7 @@ describe('Auth routes', () => {
         email: newUser.email,
         role: 'user',
         isEmailVerified: false,
+        profilePicUrl: newUser.profilePicUrl,
       });
 
       const dbUser = await User.findById(res.body.user.id);
@@ -77,6 +79,12 @@ describe('Auth routes', () => {
       await request(app).post('/v1/auth/register').send(newUser).expect(httpStatus.BAD_REQUEST);
 
       newUser.password = '11111111';
+
+      await request(app).post('/v1/auth/register').send(newUser).expect(httpStatus.BAD_REQUEST);
+    });
+
+    test('should return 400 error if profilePicUrl is invalid', async () => {
+      newUser.profilePicUrl = 'invalidUrl';
 
       await request(app).post('/v1/auth/register').send(newUser).expect(httpStatus.BAD_REQUEST);
     });
