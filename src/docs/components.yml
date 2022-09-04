@@ -13,11 +13,14 @@ components:
         role:
           type: string
           enum: [user, admin]
+        profilePicUrl:
+          type: string
       example:
         id: 5ebac534954b54139806c112
         email: fake@example.com
         name: fake name
         role: user
+        profilePicUrl: https://www.example.com/picture.jpg
 
     Blog:
       type: object

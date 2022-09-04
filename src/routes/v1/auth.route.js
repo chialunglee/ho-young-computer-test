@@ -40,6 +40,7 @@ module.exports = router;
  *               - name
  *               - email
  *               - password
+ *               - profilePicUrl
  *             properties:
  *               name:
  *                 type: string
@@ -52,10 +53,13 @@ module.exports = router;
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
+ *               profilePicUrl:
+ *                 type: string
  *             example:
  *               name: fake name
  *               email: fake@example.com
  *               password: password1
+ *               profilePicUrl: https://www.example.com/picture.jpg
  *     responses:
  *       "201":
  *         description: Created
