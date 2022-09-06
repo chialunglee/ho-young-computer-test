@@ -15,6 +15,7 @@ components:
           enum: [user, admin]
         profilePicUrl:
           type: string
+          format: url
       example:
         id: 5ebac534954b54139806c112
         email: fake@example.com
@@ -33,6 +34,7 @@ components:
           type: string
         blogUrl:
           type: string
+          format: url
         score:
           type: number
         userId:

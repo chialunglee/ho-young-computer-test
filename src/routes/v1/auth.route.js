@@ -55,6 +55,7 @@ module.exports = router;
  *                 description: At least one number and one letter
  *               profilePicUrl:
  *                 type: string
+ *                 format: url
  *             example:
  *               name: fake name
  *               email: fake@example.com

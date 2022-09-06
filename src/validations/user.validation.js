@@ -7,7 +7,7 @@ const createUser = {
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
     role: Joi.string().required().valid('user', 'admin'),
-    profilePicUrl: Joi.string().required(),
+    profilePicUrl: Joi.string().uri().required(),
   }),
 };
 
@@ -36,7 +36,7 @@ const updateUser = {
       email: Joi.string().email(),
       password: Joi.string().custom(password),
       name: Joi.string(),
-      profilePicUrl: Joi.string(),
+      profilePicUrl: Joi.string().uri(),
     })
     .min(1),
 };

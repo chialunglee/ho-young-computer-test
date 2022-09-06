@@ -43,8 +43,9 @@ module.exports = router;
  *               text:
  *                 type: string
  *                 maxLength: 5000
- *               password:
+ *               blogUrl:
  *                 type: string
+ *                 format: url
  *                 maxLength: 200
  *               score:
  *                 type: number
