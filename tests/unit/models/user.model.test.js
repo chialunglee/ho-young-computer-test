@@ -10,6 +10,7 @@ describe('User model', () => {
         email: faker.internet.email().toLowerCase(),
         password: 'password1',
         role: 'user',
+        profilePicUrl: faker.internet.url(),
       };
     });
 
@@ -19,6 +20,11 @@ describe('User model', () => {
 
     test('should throw a validation error if email is invalid', async () => {
       newUser.email = 'invalidEmail';
+      await expect(new User(newUser).validate()).rejects.toThrow();
+    });
+
+    test('should throw a validation error if profilePicUrl is invalid', async () => {
+      newUser.profilePicUrl = 'invalidUrl';
       await expect(new User(newUser).validate()).rejects.toThrow();
     });
 

@@ -14,6 +14,7 @@ const userOne = {
   password,
   role: 'user',
   isEmailVerified: false,
+  profilePicUrl: faker.internet.url(),
 };
 
 const userTwo = {
@@ -23,6 +24,7 @@ const userTwo = {
   password,
   role: 'user',
   isEmailVerified: false,
+  profilePicUrl: faker.internet.url(),
 };
 
 const admin = {
@@ -32,6 +34,7 @@ const admin = {
   password,
   role: 'admin',
   isEmailVerified: false,
+  profilePicUrl: faker.internet.url(),
 };
 
 const insertUsers = async (users) => {

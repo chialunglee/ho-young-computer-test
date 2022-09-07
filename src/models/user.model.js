@@ -37,6 +37,7 @@ const userSchema = mongoose.Schema(
     },
     profilePicUrl: {
       type: String,
+      required: true,
       trim: true,
       validate(value) {
         if (!validator.isURL(value)) {

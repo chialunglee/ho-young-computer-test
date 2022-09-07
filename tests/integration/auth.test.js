@@ -106,6 +106,7 @@ describe('Auth routes', () => {
         email: userOne.email,
         role: userOne.role,
         isEmailVerified: userOne.isEmailVerified,
+        profilePicUrl: userOne.profilePicUrl,
       });
 
       expect(res.body.tokens).toEqual({

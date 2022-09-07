@@ -177,6 +177,7 @@ describe('User routes', () => {
         email: userOne.email,
         role: userOne.role,
         isEmailVerified: userOne.isEmailVerified,
+        profilePicUrl: userOne.profilePicUrl,
       });
     });
 
@@ -380,6 +381,7 @@ describe('User routes', () => {
         name: userOne.name,
         role: userOne.role,
         isEmailVerified: userOne.isEmailVerified,
+        profilePicUrl: userOne.profilePicUrl,
       });
     });
 
@@ -498,6 +500,7 @@ describe('User routes', () => {
         name: faker.name.findName(),
         email: faker.internet.email().toLowerCase(),
         password: 'newPassword1',
+        profilePicUrl: faker.internet.url(),
       };
 
       const res = await request(app)
@@ -513,6 +516,7 @@ describe('User routes', () => {
         email: updateBody.email,
         role: 'user',
         isEmailVerified: false,
+        profilePicUrl: updateBody.profilePicUrl,
       });
 
       const dbUser = await User.findById(userOne._id);
